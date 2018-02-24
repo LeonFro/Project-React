@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Counter from "../components/Counter";
+
 
 export default class ListStock extends Component {
     constructor(props) {
@@ -23,27 +23,15 @@ if(goodsId){
 }
 }
 
-ChangeCounter=event=>{
-let valueCounter = event.target.value;
-this.setState({valueCounter});
-event.preventDefault();
-}
-    render() {
-        
-        return (
-            
+
+    render() {      
+        return (           
             <li className="list-group-item list-group-item-warning">
                 <form className="form-inline" onSubmit={this.SaveEventStore}>
                     <div className="container-fluid">
-                        <p>Propvider: {this.props.providerList.provider}</p>
-                        <p>Goods: {this.props.goodsList.goods}</p>
-                              <div className="form-group">
-
-                           
-                            <Counter  Datagoods={this.props.goodsList}                                                       
-                              number={this.props.number} onChange={this.ChangeCounter} />
-                              
-                                                              
+                        <p>Stopre: {this.props.StoreData.store}</p>
+                        <p>capacity: {this.props.StoreData.capacity}</p>
+                              <div className="form-group">                                                                                                         
                             <button className="btn btn-warning pull-right"
                             onClick={() => { this.props.deleteProvider(this.state.id)}}>Delete</button>
                              <button className="btn btn-success pull-right">Save</button>

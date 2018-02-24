@@ -6,9 +6,9 @@ import {
   Switch
 } from 'react-router-dom';
 import Stock from './pages/Stock'
-import Provider from './pages/Provider'
+import Provider from './pages/Propvider'
 import Goods from './pages/Goods'
-import Shipment from './pages/Shipment'
+import SummTabs from './pages/SummTabs'
 import Toolbar from "./components/Toolbar"
 import NotFound from "./pages/NotFound"
 
@@ -21,7 +21,6 @@ export default class App extends Component {
           id: 2,
           goods: "Paper",
           providerId: 1,
-          number:0
         }
       ],
 
@@ -32,22 +31,27 @@ export default class App extends Component {
         }
       ],
 
-      dataStock: [
-
-      ]
+      dataStore:[{
+        id:1,
+        store:"Store#1",
+        capacity:10
+      }]
     }
+    SummTabs:[{
+      id:1,
+    }]
 
   }
 
 
-  DeletePrvider = id => {
-    let findIdProvider = function (elem, index, array) {
-      return id === id
-    }
-    ///////////////////////////////////
-  }
+  // DeletePrvider = id => {
+  //   let findIdProvider = function (elem, index, array) {
+  //     return id === id
+  //   }
+  //   ///////////////////////////////////
+  // }
 
-  appendProvider = provider => {
+  appendProvider = provider => {//Сохраняет поставщика
     let ArrProvider = {
       id: Date.now(),
       provider: provider
@@ -57,26 +61,24 @@ export default class App extends Component {
   }
 
   addGoodsPlusProvider = (goods, providerId) => {
-    let ArrGoodsAndProvider = {
+    let ArrGoodsAndProvider = { //сохраняет Товары и id поставщика 
       id: Date.now(),
       goods: goods,
       providerId: providerId,
-      number:0
+      
     }
     let dataGoods = [...this.state.dataGoods, ArrGoodsAndProvider];
     this.setState({ dataGoods });
   }
-  SaveStore=(goodsId,valueCounter)=>{
-    let dataGoods=this.state.dataGoods.map(x=>{
-      if(x.id==goodsId){
-        x.number=valueCounter;
-      }
-      return x;
-    })
-    this.setState({dataGoods});
+  addStore=(store,capasity)=>{//сохраняет склад
+     let ArrStore = {
+       id:Date.now(),
+       store:store,
+       capacity:capasity
+     }
+     let dataStore=[...this.state.dataStore,ArrStore];
+     this.setState({dataStore});
   }
-
-
 
   render() {
     return (
@@ -99,17 +101,18 @@ export default class App extends Component {
                   {...props} />
               )} />
               <Route path={`/Stock`} render={props => (
-                <Stock
-                  ProvidersData={this.state.dataProvider}
-                  GoodsData={this.state.dataGoods}
-                  StockData={this.state.dataStock}
-                  onSaveStore={this.SaveStore}
+                <Stock                  
+                  StoreData={this.state.dataStore}
+                  onAddStore={this.addStore}
+
                   {...props} />
               )} />
-              <Route path={`/Shipment`} render={props => (
-                <Shipment
+              <Route path={`/SummTabs`} render={props => (
+                <SummTabs
                   ProvidersData={this.state.dataProvider}
                   GoodsData={this.state.dataGoods}
+                  TabsSumm={this.state.SummTabs}
+                  StoreData={this.state.dataStore}
                   {...props} />
               )} />
               <Route render={() => (

@@ -27,9 +27,9 @@ thisChange=event=>{
   render(){
 return(
   <div className="row">
-    <div className="col-md-6 col-md-offset-3">
-      <div>
-        
+  <div className="col-xs-3 col-sm-3"> </div>
+            <div className="col-xs-8 col-sm-5">
+
         <form className="form-inline" onSubmit={this.addProvider} >
           <div className="form-control-static">
             <h3 className="form-control-static cool">Provider</h3>
@@ -50,6 +50,6 @@ return(
         </ul>
       </div>
     </div>
-  </div>
+ 
 )}
 }

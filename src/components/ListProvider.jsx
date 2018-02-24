@@ -20,7 +20,7 @@ render(){
                     }>
                 <div className="container-fluid">
                     {this.props.ProvidersData.provider}
-                    <button className="btn btn-success pull-right" 
+                    <button className="btn btn-success pull-right go" 
                     onClick={()=>{this.props.deleteProvider(this.state.id)}}>Delete</button>
                 </div>
                 </form>
