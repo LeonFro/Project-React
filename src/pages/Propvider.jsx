@@ -29,11 +29,13 @@ return(
   <div className="row">
     <div className="col-md-6 col-md-offset-3">
       <div>
+        
         <form className="form-inline" onSubmit={this.addProvider} >
           <div className="form-control-static">
             <h3 className="form-control-static cool">Provider</h3>
           </div>
-          <input type="text" className="form-control" placeholder="Add provider" value={this.state.provider} onChange={this.thisChange}/>
+          <input type="text" className="form-control" placeholder="Add provider" 
+          value={this.state.provider} onChange={this.thisChange}/>
           <button type="submit" className="btn btn-default" >Add</button>
         </form>
 
