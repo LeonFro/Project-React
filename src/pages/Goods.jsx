@@ -9,8 +9,11 @@ this.state={
   value:props.ProvidersData[0].id,
   goodsPlusProvider:''
 }
+this.goodsServes=props.goodsServes;
   }
   
+goodsServes;
+
   addGoodsPlusProvider=event=>{
     event.preventDefault();
     let goodsPlusProvider=this.state.goodsPlusProvider;
@@ -50,6 +53,8 @@ this.state={
                 </select>
 
                 <button type="submit" className="btn btn-default">Add</button>
+                <button type="submit" className="btn btn-default" onClick={x=>(this.goodsServes.edit("Hello!"))}>Edit</button>
+                <button type="submit" className="btn btn-default" onClick={x=>(this.goodsServes.add({goods:"apple", providerId:1}))}>Add</button>
               </form>
 
               <ul className="list-group">

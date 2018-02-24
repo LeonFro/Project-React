@@ -6,43 +6,25 @@ import {
   Switch
 } from 'react-router-dom';
 import Stock from './pages/Stock'
-import Provider from './pages/Propvider'
-import Goods from './pages/Goods'
-import SummTabs from './pages/SummTabs'
-import Toolbar from "./components/Toolbar"
-import NotFound from "./pages/NotFound"
+import Provider from './pages/Propvider';
+import Goods from './pages/Goods';
+import SummTabs from './pages/SummTabs';
+import Toolbar from "./components/Toolbar";
+import NotFound from "./pages/NotFound";
+import GoodsService from "./GoodsService";
+import DataBase from './components/DataBase';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataGoods: [
-        {
-          id: 2,
-          goods: "Paper",
-          providerId: 1,
-        }
-      ],
-
-      dataProvider: [
-        {
-          id: 1,
-          provider: "ProBox"
-        }
-      ],
-
-      dataStore:[{
-        id:1,
-        store:"Store#1",
-        capacity:10
-      }]
-    }
-    SummTabs:[{
-      id:1,
-    }]
+      
 
   }
-
+}
+  Data = new DataBase();
+  GoodsService = new GoodsService(this.Data);
+  
 
   // DeletePrvider = id => {
   //   let findIdProvider = function (elem, index, array) {
@@ -98,6 +80,7 @@ export default class App extends Component {
                   ProvidersData={this.state.dataProvider}
                   GoodsData={this.state.dataGoods}
                   onAddGoodsAndProvider={this.addGoodsPlusProvider}
+                  goodsServes={ this.GoodsService } //{add:(x)=>{alert(x)}}
                   {...props} />
               )} />
               <Route path={`/Stock`} render={props => (
