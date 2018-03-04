@@ -5,63 +5,24 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import Stock from './pages/Stock'
-import Provider from './pages/Propvider';
-import Goods from './pages/Goods';
-import SummTabs from './pages/SummTabs';
-import Toolbar from "./components/Toolbar";
-import NotFound from "./pages/NotFound";
-import GoodsService from "./GoodsService";
+import Home from './pages/Home'
+import Vender from './pages/Vender';
+ import Goods from './pages/Goods';
+// import SummTabs from './pages/SummTabs';
+ import Toolbar from "./components/Toolbar";
+ import NotFound from "./pages/NotFound";
+// import GoodsService from "./GoodsService";
 import DataBase from './components/DataBase';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      
-
+    this.state = {  
   }
 }
+
   Data = new DataBase();
-  GoodsService = new GoodsService(this.Data);
-  
-
-  // DeletePrvider = id => {
-  //   let findIdProvider = function (elem, index, array) {
-  //     return id === id
-  //   }
-  //   ///////////////////////////////////
-  // }
-
-  appendProvider = provider => {//Сохраняет поставщика
-    let ArrProvider = {
-      id: Date.now(),
-      provider: provider
-    };
-    let dataProvider = [...this.state.dataProvider, ArrProvider];
-    this.setState({ dataProvider })
-  }
-
-  addGoodsPlusProvider = (goods, providerId) => {
-    let ArrGoodsAndProvider = { //сохраняет Товары и id поставщика 
-      id: Date.now(),
-      goods: goods,
-      providerId: providerId,
-      
-    }
-    let dataGoods = [...this.state.dataGoods, ArrGoodsAndProvider];
-    this.setState({ dataGoods });
-  }
-  addStore=(store,capasity)=>{//сохраняет склад
-     let ArrStore = {
-       id:Date.now(),
-       store:store,
-       capacity:capasity
-     }
-     let dataStore=[...this.state.dataStore,ArrStore];
-     this.setState({dataStore});
-  }
-
+    
   render() {
     return (
       <Router>
@@ -69,21 +30,20 @@ export default class App extends Component {
           <Toolbar />
           <div>
             <Switch>
-              <Route exact path={`/Provider`} render={props => (
-                <Provider
-                  ProvidersData={this.state.dataProvider}
-                  onAddProvider={this.appendProvider}
+            <Route exact path={`/`} render={props => (
+                <Home                
                   {...props} />
               )} />
-              <Route path={`/Goods`} render={props => (
-                <Goods
-                  ProvidersData={this.state.dataProvider}
-                  GoodsData={this.state.dataGoods}
-                  onAddGoodsAndProvider={this.addGoodsPlusProvider}
-                  goodsServes={ this.GoodsService } //{add:(x)=>{alert(x)}}
+              <Route  path={`/Vender`} render={props => (
+                <Vender                
+                  DataVender={this.venderData}
                   {...props} />
               )} />
-              <Route path={`/Stock`} render={props => (
+               { <Route path={`/Goods`} render={props => (
+                <Goods                 
+                  {...props} />
+              )} /> }
+              {/* <Route path={`/Stock`} render={props => (
                 <Stock                  
                   StoreData={this.state.dataStore}
                   onAddStore={this.addStore}
@@ -97,7 +57,7 @@ export default class App extends Component {
                   TabsSumm={this.state.SummTabs}
                   StoreData={this.state.dataStore}
                   {...props} />
-              )} />
+              )} /> */} 
               <Route render={() => (
                 <NotFound />
               )} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListStock from "../components/ListStock";
+import DataBase from './components/DataBase';
 
 export default class Stock extends Component {
   constructor(props){
@@ -8,6 +9,18 @@ export default class Stock extends Component {
       capacity:0
      }
   }
+
+Data = new DataBase();
+
+addStore=(store,capasity)=>{//сохраняет склад
+    let ArrStore = {
+      id:Date.now(),
+      store:store,
+      capacity:capasity
+    }
+    let dataStore=[...this.state.dataStore,ArrStore];
+    this.setState({dataStore});
+ }
 
 onSelect=event=>{
 let value = event.target.value;
