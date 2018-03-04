@@ -4,6 +4,7 @@ export default class ListVender extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            
         }
     }
 
@@ -18,7 +19,7 @@ export default class ListVender extends Component {
                     <div className="container-fluid">
                         Vender:{this.props.venderData.vender}
                         <button className="btn btn-success pull-right go"
-                            onClick={() => { this.props.deleteProvider(this.state.id) }}>Delete</button>
+                            onClick={() => { this.props.deleteProvider(this.props.venderData.id) }}>Delete</button>
                     </div>
                 </form>
             </li>

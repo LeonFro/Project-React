@@ -7,22 +7,24 @@ import {
 } from 'react-router-dom';
 import Home from './pages/Home'
 import Vender from './pages/Vender';
- import Goods from './pages/Goods';
+import Goods from './pages/Goods';
 // import SummTabs from './pages/SummTabs';
- import Toolbar from "./components/Toolbar";
- import NotFound from "./pages/NotFound";
+import Toolbar from "./components/Toolbar";
+import NotFound from "./pages/NotFound";
 // import GoodsService from "./GoodsService";
 import DataBase from './components/DataBase';
 
 export default class App extends Component {
+  data = new DataBase();
   constructor(props) {
     super(props);
-    this.state = {  
+    this.state = {
+      data: this.data
+    }
   }
-}
 
-  Data = new DataBase();
-    
+
+
   render() {
     return (
       <Router>
@@ -30,19 +32,19 @@ export default class App extends Component {
           <Toolbar />
           <div>
             <Switch>
-            <Route exact path={`/`} render={props => (
-                <Home                
+              <Route exact path={`/`} render={props => (
+                <Home
                   {...props} />
               )} />
-              <Route  path={`/Vender`} render={props => (
-                <Vender                
-                  DataVender={this.venderData}
+              <Route path={`/Vender`} render={props => (
+                <Vender
+                  data = {this.data}
                   {...props} />
               )} />
-               { <Route path={`/Goods`} render={props => (
-                <Goods                 
+              {<Route path={`/Goods`} render={props => (
+                <Goods
                   {...props} />
-              )} /> }
+              )} />}
               {/* <Route path={`/Stock`} render={props => (
                 <Stock                  
                   StoreData={this.state.dataStore}
@@ -57,7 +59,7 @@ export default class App extends Component {
                   TabsSumm={this.state.SummTabs}
                   StoreData={this.state.dataStore}
                   {...props} />
-              )} /> */} 
+              )} /> */}
               <Route render={() => (
                 <NotFound />
               )} />
