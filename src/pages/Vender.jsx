@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
-import ListVender from "../components/ListVender"
-import DataBase from '../components/DataBase';
+import ListVender from "../components/ListVender";
+import { VenderService } from "../Services/VenderService";
 
 export default class Vender extends Component {
-  database;
-  constructor(db) {
-    super(db)
-    this.database = db;
+  venderService;
+  constructor(props) {
+    super(props) 
+    this.venderService = new VenderService(props.data);   
     this.state = {
       vender: ''
     }
-  }
-
-  db = new DataBase();
-
-  onAddvender = vender => {
-    //   this.DataBase.push(vender);
-    //   var venderService = new Vender(); 
-this.db.dataVender.push({
-      id: Date.now(),
-      vender: vender
-    });
-    // this.DataBase.push(vender)
-     let db = [...this.db];
-     this.setState({ db })
+    this.deleteVender=this.deleteVender.bind(this);
   }
 
   addVender = event => {
     event.preventDefault();
     let vender = this.state.vender;
     if (vender) {
-      this.onAddvender(vender);
-      this.setState({ vender: " " });
+      this.venderService.add(vender);
+      this.setState({ vender: "" });
     }
   }
 
   thisChange = event => {
     let vender = event.target.value;
     this.setState({ vender })
-  };
+  }; 
 
+ deleteVender(id){
+  this.venderService.deleteVender(id);
+  this.setState({ });
+ }
 
   render() {
     return (
@@ -57,11 +48,11 @@ this.db.dataVender.push({
           </form>
 
           <ul className="list-group">
-            {this.db.dataVender.map(vender =>
+            {this.venderService.getAll().map(vender =>
               (<ListVender
-
                 key={vender.id}
                 venderData={vender}
+                deleteProvider={this.deleteVender}
               />
               ))}
           </ul>

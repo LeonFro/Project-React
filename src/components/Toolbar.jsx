@@ -14,7 +14,7 @@ function Toolbar() {
                             <button className="btn btn-default"><NavLink exact to="/" activeStyle={{color:"red"}}>Home</NavLink></button>
                              <button className="btn btn-default"><NavLink to="/Vender" activeStyle={{color:"red"}}>Vender</NavLink></button>
                             <button  className="btn btn-default"> <NavLink to="/Goods" activeStyle={{color:"green"}}>Goods</NavLink></button>
-                            <button  className="btn btn-default"><NavLink to="/Stock" activeStyle={{color:"orange"}}>Stock</NavLink></button>
+                            <button  className="btn btn-default"><NavLink to="/Store" activeStyle={{color:"orange"}}>Store</NavLink></button>
                             <button  className="btn btn-default"><NavLink to="/SummTabs" activeStyle={{color:"orange"}}>SummTabs</NavLink></button>                        
                         </ul>
                     </div>

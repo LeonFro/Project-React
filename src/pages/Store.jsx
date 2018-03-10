@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import ListStock from "../components/ListStock";
-import DataBase from './components/DataBase';
-
-export default class Stock extends Component {
+import{StoreService} from "../Services/StoreService";
+import{GoodsService} from "../Services/GoodsService";
+export default class Store extends Component {
+  goodsService;
+  storeService; 
   constructor(props){
-    super(props);  
+    super(props);
+    this.goodsService = new GoodsService(props.data);
+    this.storeService = new StoreService(props.data);
     this.state={
       capacity:0
      }
   }
-
-Data = new DataBase();
 
 addStore=(store,capasity)=>{//сохраняет склад
     let ArrStore = {
@@ -69,14 +71,14 @@ ChangeCapacity=event=>{
               <button type="submit" className="btn btn-default">Add Store</button>
             </form>
 
-            <ul className="list-group">
+            {/* <ul className="list-group">
                   {this.props.StoreData.map(y=>
                 (<ListStock  StoreData={y} 
                 key={y.id} 
                 store={y.store}
                 capacity={y.capacity}              
                 />))}           
-            </ul>
+            </ul> */}
           </div>
         </div>
       
