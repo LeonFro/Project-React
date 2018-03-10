@@ -21,10 +21,10 @@ export class VenderService {
             return x.id == id
         })
         let indexGoods = this.database.dataGoods.findIndex(y=>{
-            return y.id == id
+            return y.venderId == id
         })
 
-        if(indexVender==indexGoods){
+        if(indexGoods>-1){
             alert("Данный поставщик используется!")
         }else{ this.database.dataVender.splice(indexVender, 1);
         }

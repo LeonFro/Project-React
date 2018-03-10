@@ -18,7 +18,7 @@ export default class Goods extends Component {
   }
 
   addGoodsPlusVender(e) {
-    e.preventDefault();
+        e.preventDefault();
     let newGoods = this.state.goods;
     let newVender = this.state.vender;
     if (newGoods, newVender) {

@@ -5,7 +5,7 @@ export class GoodsService {
     }
 
     addGoodAndVender(newGood,newVender) {
-        let newId = {id:Date.now()};
+        let newId = Date.now();
         this.database.dataGoods.push({
             id: newId,
             goods:newGood,
