@@ -118,6 +118,7 @@ export default class SummTabs extends Component {
           <div className="row">
             <button type="button" className="btn btn-primary btn-sm btn-block">+</button>
           </div>
+          <table>
           <thead>
           <tr>
                 <th>1</th>
@@ -128,21 +129,23 @@ export default class SummTabs extends Component {
                 <th>6</th>
               </tr>
             </thead>
+            <tfoot></tfoot>
           <tbody>
             <tr> 
                {this.summService.getAll().map(x =>
                 (<Totallist
                   totalComponents={x}
                   key={x.id}
-                  resultVender={this.venderService.getAll().find(x =>
-                  x.id == totalComponents.goodsId)}
-                  resultGoods={this.goodsService.getAll().find(x =>
-                  x.id == totalComponents.goodsId)}
-                  resultStore={this.storeService.getAll().find(x =>
-                  x.id == totalComponents.storeId)}
+                  resultVender={this.venderService.getAll().find(y =>
+                  y.id == x.goodsId)}
+                  resultGoods={this.goodsService.getAll().find(y =>
+                  y.id == x.goodsId)}
+                  resultStore={this.storeService.getAll().find(y =>
+                  y.id == x.storeId)}
                 />))}  
              </tr>
-          </tbody> 
+          </tbody>
+          </table> 
         </div>
       </div>
      

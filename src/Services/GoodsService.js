@@ -44,5 +44,12 @@ export class GoodsService {
             }
             return y;
         })
+
+
+    }
+
+    findById(venderId) {
+        return this.database.dataVender.find(x =>
+            x.id == venderId)
     }
 } 

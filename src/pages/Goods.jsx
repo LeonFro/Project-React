@@ -62,14 +62,13 @@ export default class Goods extends Component {
           </form>
 
           <ul className="list-group">
-            {this.goodsService.getAll().map(goodsAndVender =>
+            {this.goodsService.getAll().map(goodItem =>
               (<ListGoodsAndVender
-                resultGoods={goodsAndVender}
-                key={goodsAndVender.id}
+                resultGoods={goodItem}
+                key={goodItem.id}
                 delGoods={this.deleteGoods}
                 FormSave={this.SaveForm}
-                resultVender={this.venderService.getAll().find(x =>
-                  x.id == goodsAndVender.venderId)} />))}
+                resultVender={this.goodsService.findById(goodItem.venderId)}/>))}    
           </ul>
         </div>
 

@@ -69,9 +69,10 @@ export default class Store extends Component {
               placeholder="Name Store"
               value={this.state.store} onChange={this.ChangeStore} />
 
-            <input type="text"
+            <input type="number"
               className="form-control gon"
               placeholder="Capacity"
+              required="required"
               value={this.state.capacity} onChange={this.ChangeCapacity} />
 
             <button type="submit" className="btn btn-default">Add Store</button>
