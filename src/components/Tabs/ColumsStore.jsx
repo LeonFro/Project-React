@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 
 export default class ColumsStore extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-this.state={
-  }
-}
-    render() {
-      return (
-     
-         <option >{this.props.StoreData.store}/{this.props.StoreData.capacity}</option>
-  
-      );
+    this.state = {
     }
+  }  //Вопрос с value
+  render() {
+    const { StoreData } = this.props;
+    return (
+
+     
+        <option value={StoreData.id}>{StoreData.store}/{StoreData.capacity}</option>
+      
+
+    );
+  }
 }

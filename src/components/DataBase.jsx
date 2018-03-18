@@ -1,12 +1,13 @@
 
 export default class DataBase {
 
-    dataGoods=[{
+    dataGoods=[
+        {
         id: 2,
         goods: "Paper",
         venderId: 1
     }
-    ];
+];
 
     dataVender=[
         {
@@ -21,6 +22,8 @@ export default class DataBase {
         capacity: 10
     }];
 
-    SummTabs=[];
+    SummTabs=[
+        
+    ];
 
 }

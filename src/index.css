@@ -8,14 +8,20 @@ body {
   margin: 0;
 } 
 .coll{
-  margin: auto;
+ text-align: left;
+  width: 100px;
+  margin:0;
 }
 .form-inline{
   background: rgba(218, 200, 175, 0.801)
 }
 .go{
   float:right;
+  margin: 0px;
 }
 .navbar-default{
   background: #bdab45
+}
+.get{
+  margin: 8px;
 }

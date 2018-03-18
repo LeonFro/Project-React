@@ -25,7 +25,7 @@ export class VenderService {
         })
 
         if(indexGoods>-1){
-            alert("Данный поставщик используется!")
+            alert("The Vender is used in the list!")
         }else{ this.database.dataVender.splice(indexVender, 1);
         }
        

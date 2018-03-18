@@ -12,7 +12,7 @@ import Store from './pages/Store';
 import Toolbar from "./components/Toolbar";
 import NotFound from "./pages/NotFound";
 import DataBase from './components/DataBase';
-
+import SummTabs from './pages/SummTabs';
 export default class App extends Component {
   data = new DataBase();
   constructor(props) {
@@ -48,18 +48,11 @@ export default class App extends Component {
                  data = {this.data}
                   {...props} />
               )} />
-              {/* <Route path={`/SummTabs`} render={props => (
+               <Route path={`/SummTabs`} render={props => (
                 <SummTabs
-                  ProvidersData={this.state.dataProvider}
-                  GoodsData={this.state.dataGoods}
-                  TabsSumm={this.state.SummTabs}
-                  StoreData={this.state.dataStore}
+                  data = {this.data}
                   {...props} />
-<<<<<<< HEAD
-              )} />  */}
-=======
-              )} /> */}
->>>>>>> 6299b9c445f45a5ea02c587f30cc1e7d7c3b05a3
+              )} />  
               <Route render={() => (
                 <NotFound />
               )} />
