@@ -13,17 +13,24 @@ export default class DataBase {
         {
             id: 1,
             vender: "ProBox"
-        }
+        },
+        {
+            id: 2,
+            vender: "Zanussi"
+        },
     ];
 
     dataStore=[{
         id: 1,
         store: "Store#1",
-        capacity: 10
+        capacity: 10,
+        quantity:4
     }];
 
-    SummTabs=[
-        
-    ];
+    dataSumm=[];
+
+    dataWriteOff=[];
+    
+    dataTotal=[];
 
 }

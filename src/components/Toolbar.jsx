@@ -16,6 +16,8 @@ function Toolbar() {
                             <button className="btn btn-link"> <NavLink to="/Goods" activeStyle={{ color: "green" }}>Goods</NavLink></button>
                             <button className="btn btn-link"><NavLink to="/Store" activeStyle={{ color: "orange" }}>Store</NavLink></button>
                             <button className="btn btn-link"><NavLink to="/SummTabs" activeStyle={{ color: "orange" }}>SummTabs</NavLink></button>
+                            <button className="btn btn-link"><NavLink to="/Writeoff" activeStyle={{ color: "orange" }}>WriteOff</NavLink></button>
+                            <button className="btn btn-link"><NavLink to="/Totallist" activeStyle={{ color: "orange" }}>Totallist</NavLink></button>
                         </ul>
                     </div>
                 </div>

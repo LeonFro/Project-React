@@ -1,154 +1,106 @@
-import React, { Component,Fragment } from 'react';
-import IdTabs from "../components/Tabs/IdTabs";
-import ColumGoods from "../components/Tabs/ColumGoods";
-import ColumStore from "../components/Tabs/ColumsStore";
+import React, { Component, Fragment } from 'react';
 import { GoodsService } from "../Services/GoodsService";
 import { StoreService } from "../Services/StoreService";
-import { VenderService } from "../Services/VenderService";
 import { SummService } from "../Services/SummService";
-import Totallist from "../components/Totallist";
+import OptionStore from "../components/OptionStore";
+import ResultSearch from "../Tabs/ResultSearch";
+import ComboBoxStore from "../components/ComboBoxStore";
+
 
 export default class SummTabs extends Component {
   goodsService;
-  venderService;
   storeService;
   summService;
- 
+
   constructor(props) {
     super(props);
     this.goodsService = new GoodsService(props.data);
-    this.venderService = new VenderService(props.data);
     this.storeService = new StoreService(props.data);
     this.summService = new SummService(props.data);
+    this.formSearch = this.formSearch.bind(this);
     this.addSumm = this.addSumm.bind(this);
     this.state = {
-      received: 0,
-      writtenOff: 0
+      quantity: '',
+      title: "Choose store"
     }
-  };// Комопонет не заваршен, добавление полей и отрисовка результата.
-
-  addSumm(e) {
-    e.preventDefault();
-    let goodsId = this.state.goodsValue;
-    let storeId = this.state.storeValue;
-    let valueReceived = this.state.received;
-    let valuewrittenOff = this.state.writtenOff;
-    if (goodsId, storeId, valueReceived, valuewrittenOff) {
-      this.storeService.addForm(goodsId, storeId, valueReceived, valuewrittenOff);
-      this.setState({
-        received: "",
-        writtenOff: ""
-      });
-    }
-  }
-
-  hendleSelectGoogs = e => {
-    let goodsValue = e.target.value;
-    this.setState({ goodsValue });
-    e.preventDefault();
   };
 
-  hendleSelectStore = e => {
-    let storeValue = e.target.value;
-    this.setState({ storeValue });
+  addSumm(summId, nameStore, idGoods, valueReceived) {
+    this.summService.addFormInSumm(summId, nameStore, idGoods, valueReceived)
+  };
+
+  formSearch(e) {
     e.preventDefault();
-  }
-  addTotalline = e => {
+    let storeId = this.state.store;
+    let valueQuantity = this.state.quantity;
+    if (storeId, valueQuantity) {
+      let objectStore = this.storeService.findStore(storeId, valueQuantity);
+      this.summService.addDataSumm(objectStore);
+      this.setState({
+        quantity: '',
+      })
+    }
+  };
+
+  hendleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
     return (
-         <div className="row">
-        <div className="container-fluid">
-          <h2>SummTabs</h2>
-          <form className="form-inline"  onSubmit={this.addTotalline}> 
-          <table className="table">
-            <thead>
-              <tr>
-                <th>#id</th>
-                <th>Goods/Vender</th>
-                <th>Store</th>
-                <th>Received</th>
-                <th>Written off</th>
-                <th></th>
-              </tr>
-            </thead>
-            
-            <tbody>
-               
-                <tr>
-                  <td>1</td>
-                  <td> <select  onChange={this.hendleSelectGoogs} >  
-                    {this.goodsService.getAll().map(goodsAndVender =>
-                      (<ColumGoods
-                        resultGoods={goodsAndVender}
-                        key={goodsAndVender.id}
-                        value={goodsAndVender.id}
-                        resultVender={this.venderService.getAll().find(x =>
-                          x.id == goodsAndVender.venderId)} />))}</select>
-                  </td>
-                  <td> <select  onChange={this.hendleSelectStore}>
+      <Fragment>
+        <div className="row">
+          <div className="container-fluid">
+            <div className="form-group row">
+              <div className="col-xs-3 col-sm-3"> </div>
+              <div className="col-xs-8 col-sm-6">
+                <div className="form-control-static">
+                </div>
+                <h3 className="form-control-static cool">Filling of a store</h3>
+                <form className="form-inline" onSubmit={this.formSearch}>
+
+                  <select className="form-control" name="store" onChange={this.hendleChange}>
+                    <option>{this.state.title}</option>
                     {this.storeService.getAll().map(store =>
-                      (<ColumStore
+                      (<ComboBoxStore
                         StoreData={store}
                         key={store.id}
-                        store={store.store}
-                        capacity={store.capacity}
                         value={store.id}
-                      />))}</select>
-                  </td>
+                      />))}
+                  </select>
 
-                  <td><div className="container">
-                    <input type="text" className="form-control " name="received" value={this.state.received} />
-                  </div>
-                  </td>
-
-                  <td><div className="row">
-                    <input type="text" className="form-control coll" name="writtenOff" value={this.state.writtenOff} />
-                  </div>
-                  </td>
-                  <td><button className="btn btn-default" type="submit">Save</button>
-                  </td>
-                </tr>
-               
-            </tbody>
-          </table>
-          </form>
-          <div className="row">
-            <button type="button" className="btn btn-primary btn-sm btn-block">+</button>
+                  <input type="text" className="form-control" name="quantity" value={this.state.quantity}
+                    required placeholder="Quantity" onChange={this.hendleChange} />
+                  <button type="submit" className="btn btn-default">Search</button>
+                </form>
+              </div>
+            </div>
           </div>
-          <table>
-          <thead>
-          <tr>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-              </tr>
-            </thead>
-            <tfoot></tfoot>
-          <tbody>
-            <tr> 
-               {this.summService.getAll().map(x =>
-                (<Totallist
-                  totalComponents={x}
-                  key={x.id}
-                  resultVender={this.venderService.getAll().find(y =>
-                  y.id == x.goodsId)}
-                  resultGoods={this.goodsService.getAll().find(y =>
-                  y.id == x.goodsId)}
-                  resultStore={this.storeService.getAll().find(y =>
-                  y.id == x.storeId)}
-                />))}  
-             </tr>
-          </tbody>
-          </table> 
         </div>
-      </div>
-     
+
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">#id</div> </div>
+            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">Store</div></div>
+            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert"> Goods </div></div>
+            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert"> Volume</div></div>
+          </div></div>
+        <div className="container-fluid">
+          <div className="row">
+
+            {this.summService.getAll().map(x =>
+              (<ResultSearch
+                goodsData={this.goodsService.getAll()}
+                summComponent={x}
+                key={x.id}
+                addFormInDataSumm={this.addSumm}
+                resultStore={this.storeService.findById(x.storeId)
+                } />
+              ))}
+              
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }

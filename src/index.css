@@ -13,7 +13,8 @@ body {
   margin:0;
 }
 .form-inline{
-  background: rgba(218, 200, 175, 0.801)
+  background: rgba(218, 200, 175, 0.801);
+   margin:auto;
 }
 .go{
   float:right;
@@ -22,6 +23,7 @@ body {
 .navbar-default{
   background: #bdab45
 }
+
 .get{
   margin: 8px;
 }

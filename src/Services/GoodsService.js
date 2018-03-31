@@ -12,9 +12,20 @@ export class GoodsService {
             goods: newGood,
             venderId: newId
         });
+       {
         this.database.dataVender.push({
             id: newId,
             vender: newVender
+        })
+    }        
+    }
+
+    addGoods(newGood,ho){
+        let idGoods = ho.id
+        this.database.dataGoods.push({
+            id:idGoods,
+            goods:newGood,
+            venderId:idGoods
         })
     }
 
@@ -44,8 +55,6 @@ export class GoodsService {
             }
             return y;
         })
-
-
     }
 
     findById(venderId) {

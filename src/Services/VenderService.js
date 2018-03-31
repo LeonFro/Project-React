@@ -10,11 +10,11 @@ export class VenderService {
             id: Date.now(),
             vender: vender
         });
-    }
+    };
 
     getAll() {
         return this.database.dataVender;
-    }
+    };
 
     deleteVender(id) {
         let indexVender = this.database.dataVender.findIndex(x => {
@@ -29,5 +29,10 @@ export class VenderService {
         }else{ this.database.dataVender.splice(indexVender, 1);
         }
        
-    }
+    };
+
+    findVender(newVender){
+        return this.database.dataVender.find(x =>
+            x.vender == newVender)
+    };
 } 

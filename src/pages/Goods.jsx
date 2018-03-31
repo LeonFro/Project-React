@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ListGoodsAndVender from "../components/ListGoodsAndVender";
 import { GoodsService } from "../Services/GoodsService";
 import { VenderService } from "../Services/VenderService";
+import OptionVender from '../components/OptionVender'
 
 export default class Goods extends Component {
   goodsService;
@@ -15,7 +16,7 @@ export default class Goods extends Component {
     this.SaveForm = this.SaveForm.bind(this);
     this.state = {
       goods: '',
-      vender: ''
+      vender: '',
     }
   };
 
@@ -23,12 +24,20 @@ export default class Goods extends Component {
     e.preventDefault();
     let newGoods = this.state.goods;
     let newVender = this.state.vender;
+    let ho = this.venderService.findVender(newVender);
+    if(ho!==undefined){
+     this.goodsService.addGoods(newGoods,ho)
+     this.setState({
+      goods: "",
+      vender: ""
+    })
+    }else{
     if (newGoods, newVender) {
       this.goodsService.addGoodAndVender(newGoods, newVender);
       this.setState({
         goods: "",
         vender: ""
-      });
+      })}
     }
   }
 
@@ -55,9 +64,16 @@ export default class Goods extends Component {
               <h3 className="form-control-static cool">Goods</h3>
             </div>
             <input type="text" className="form-control" name="goods" value={this.state.goods}
-              placeholder="Add good" onChange={this.handleChange} />
+            required placeholder="Add good" onChange={this.handleChange} />
             <input type="text" className="form-control" name="vender" value={this.state.vender}
-              placeholder="Add vender" onChange={this.handleChange} />
+            required placeholder="Add vender" onChange={this.handleChange} list="venders" />
+                <datalist id="venders">
+                 {this.venderService.getAll().map(x=>(<OptionVender
+                 result={x}
+                 key={x.id}
+                 />))}
+                  </datalist>
+
             <button type="submit" className="btn btn-default">Add</button>
           </form>
 

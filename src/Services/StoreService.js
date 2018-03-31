@@ -33,5 +33,22 @@ let resetDataStore = this.database.dataStore.map(x=>{
     return x;
 })
 };
- 
+
+findStore(storeId,valueQuantity){
+    let objectStore = this.database.dataStore.find(x =>
+             x.id == storeId);
+     let result = objectStore.capacity-objectStore.quantity;
+     if (valueQuantity <= result) {        
+         return  objectStore
+     }
+     else {
+          alert("No volume needed in the store")// Дописать резальтат !         
+     }
+    };
+
+    findById(storeId) {
+        return this.database.dataStore.find(x =>
+            x.id == storeId);
+    };
+
 } 
