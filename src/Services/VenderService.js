@@ -31,7 +31,7 @@ export class VenderService {
        
     };
 
-    findVender(newVender){
+    findVender(newVender){ // проверяет имеется ли Вендер в базе (резальтат/undefind)
         return this.database.dataVender.find(x =>
             x.vender == newVender)
     };

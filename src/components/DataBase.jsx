@@ -24,7 +24,6 @@ export default class DataBase {
         id: 1,
         store: "Store#1",
         capacity: 10,
-        quantity:4
     }];
 
     dataSumm=[];

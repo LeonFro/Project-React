@@ -2,7 +2,7 @@ export class GoodsService {
     database;
     constructor(db) {
         this.database = db;
-        this.deleteGoods = this.deleteGoods.bind(this);
+        
     }
 
     addGoodAndVender(newGood, newVender) {
@@ -20,12 +20,13 @@ export class GoodsService {
     }        
     }
 
-    addGoods(newGood,ho){
-        let idGoods = ho.id
+    addGoods(newGood,checkVender){// получаем (строка),(obj) , Метод добавления в базу Гудсов 
+        let idVender = checkVender.id; // присваиваем  idвендору
+        let idGoods=Date.now();
         this.database.dataGoods.push({
             id:idGoods,
             goods:newGood,
-            venderId:idGoods
+            venderId:idVender
         })
     }
 
@@ -60,5 +61,15 @@ export class GoodsService {
     findById(venderId) {
         return this.database.dataVender.find(x =>
             x.id == venderId)
-    }
+    };
+    
+    findObjGoods(idGoods) {       
+           return this.database.dataGoods.find(x => 
+             x.id == idGoods);                 
+         };
+
+         findByIdGoods(goodsId){
+            return this.database.dataGoods.find(x =>
+                x.id == goodsId)
+        };
 } 

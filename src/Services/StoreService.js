@@ -37,8 +37,7 @@ let resetDataStore = this.database.dataStore.map(x=>{
 findStore(storeId,valueQuantity){
     let objectStore = this.database.dataStore.find(x =>
              x.id == storeId);
-     let result = objectStore.capacity-objectStore.quantity;
-     if (valueQuantity <= result) {        
+          if (objectStore.capacity>= valueQuantity) {        
          return  objectStore
      }
      else {

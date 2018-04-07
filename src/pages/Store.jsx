@@ -69,7 +69,7 @@ export default class Store extends Component {
               placeholder="Name Store"
               value={this.state.store} onChange={this.ChangeStore} />
 
-            <input type="number"
+            <input type="number" min="0" max="100" 
               className="form-control gon"
               placeholder="Capacity"
               required="required"

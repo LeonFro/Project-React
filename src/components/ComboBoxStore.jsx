@@ -9,7 +9,7 @@ export default class ComboBoxStore extends Component {
   render() {
     const { StoreData } = this.props;
     return (
-        <option value={StoreData.id}>{StoreData.store}</option>
+        <option value={StoreData.id} >{StoreData.store}</option>
     );
   }
 }

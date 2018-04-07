@@ -42,9 +42,9 @@ export default class Writeoff extends Component {
       <div className="row">
   <div className="col-md-3"></div>
   <div className="col-md-6"><h3 className="form-control-static cool">Write-off of goods</h3> 
-                <form className="form-inline" onSubmit={this.formSearch}>
+                 <form className="form-inline" onSubmit={this.formSearch}>
                 <div className="container-fluid">
-                  <select className="form-control" name="goods" onChange={this.hendleChange}>
+                  {/* <select className="form-control" name="goods" onChange={this.hendleChange}>
                      <option>{this.state.title}</option>
                     {this.goodsService.getAll().map(goods =>
                       (<ComboBoxGoods
@@ -52,7 +52,7 @@ export default class Writeoff extends Component {
                         key={goods.id}
                         value={goods.id}
                       />))} 
-                  </select>
+                  </select>  */}
                   <input type="text" className="form-control" name="quantity"
                     required placeholder="Quantity" onChange={this.hendleChange} />
                   <button type="submit" className="btn btn-default">Search</button>

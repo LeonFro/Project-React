@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ComboBoxStore extends Component {
+export default class ComboBoxGoods extends Component {
   constructor(props) {
     super(props);
     this.state = {

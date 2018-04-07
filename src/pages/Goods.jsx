@@ -24,15 +24,15 @@ export default class Goods extends Component {
     e.preventDefault();
     let newGoods = this.state.goods;
     let newVender = this.state.vender;
-    let ho = this.venderService.findVender(newVender);
-    if(ho!==undefined){
-     this.goodsService.addGoods(newGoods,ho)
+    let checkVender = this.venderService.findVender(newVender);// результат(obj id: , name: )  или undefined
+    if(checkVender!==undefined){ 
+     this.goodsService.addGoods(newGoods,checkVender);// передаем в метод добавления в базу Гудсов 
      this.setState({
       goods: "",
       vender: ""
     })
     }else{
-    if (newGoods, newVender) {
+    if (newGoods, newVender){
       this.goodsService.addGoodAndVender(newGoods, newVender);
       this.setState({
         goods: "",
@@ -57,6 +57,7 @@ export default class Goods extends Component {
   render() {
     return (
       <div className="row">
+      
         <div className="col-xs-3 col-sm-3"> </div>
         <div className="col-xs-8 col-sm-6">
           <form className="form-inline" onSubmit={this.addGoodsPlusVender}>
@@ -68,6 +69,7 @@ export default class Goods extends Component {
             <input type="text" className="form-control" name="vender" value={this.state.vender}
             required placeholder="Add vender" onChange={this.handleChange} list="venders" />
                 <datalist id="venders">
+                
                  {this.venderService.getAll().map(x=>(<OptionVender
                  result={x}
                  key={x.id}
