@@ -66,8 +66,19 @@ export default class DataBase {
         volumeOfGoods:2}
 ];
 
-    dataWriteOff=[];
-    
-    dataTotal=[];
+  dataDocuments=[
+      {
+          id:222,
+          storeId:1,
+          goodsIs:13,
+          quontity:2,       
+      },
+      {
+        id:223,
+        storeId:1,
+        goodsIs:13,
+        quontity:-1,       
+    }
+  ]
 
 }

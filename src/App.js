@@ -15,6 +15,7 @@ import DataBase from './components/DataBase';
 import SummTabs from './pages/SummTabs';
 import Writeoff from './pages/Writeoff';
 import Totallist from './pages/Totallist';
+import Documents from './pages/Documents';
 
 export default class App extends Component {
   data = new DataBase();
@@ -55,7 +56,12 @@ export default class App extends Component {
                 <SummTabs
                   data = {this.data}
                   {...props} />
-              )} />  
+              )} />
+                 <Route path={`/xyz`} render={props => (
+                <Documents
+                  data = {this.data}
+                  {...props} />
+              )} />
               <Route path={`/Writeoff`} render={props => (
                 <Writeoff
                   data = {this.data}

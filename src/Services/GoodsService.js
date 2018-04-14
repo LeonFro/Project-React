@@ -2,7 +2,7 @@ export class GoodsService {
     database;
     constructor(db) {
         this.database = db;
-        
+
     }
 
     addGoodAndVender(newGood, newVender) {
@@ -12,21 +12,21 @@ export class GoodsService {
             goods: newGood,
             venderId: newId
         });
-       {
-        this.database.dataVender.push({
-            id: newId,
-            vender: newVender
-        })
-    }        
+        {
+            this.database.dataVender.push({
+                id: newId,
+                vender: newVender
+            })
+        }
     }
 
-    addGoods(newGood,checkVender){// получаем (строка),(obj) , Метод добавления в базу Гудсов 
+    addGoods(newGood, checkVender) {// получаем (строка),(obj) , Метод добавления в базу Гудсов 
         let idVender = checkVender.id; // присваиваем  idвендору
-        let idGoods=Date.now();
+        let idGoods = Date.now();
         this.database.dataGoods.push({
-            id:idGoods,
-            goods:newGood,
-            venderId:idVender
+            id: idGoods,
+            goods: newGood,
+            venderId: idVender
         })
     }
 
@@ -58,18 +58,19 @@ export class GoodsService {
         })
     }
 
-    findById(venderId) {
+    findById(venderId) { 
         return this.database.dataVender.find(x =>
             x.id == venderId)
     };
-    
-    findObjGoods(idGoods) {       
-           return this.database.dataGoods.find(x => 
-             x.id == idGoods);                 
-         };
 
-         findByIdGoods(goodsId){
-            return this.database.dataGoods.find(x =>
-                x.id == goodsId)
-        };
+    findGoodById(GoodId) {
+        return this.database.dataGoods.find(x =>
+            x.id == GoodId);
+    };
+
+    findByIdGoods(goodsId) {
+        return this.database.dataGoods.find(x =>
+            x.id == goodsId)
+    };
+
 } 
