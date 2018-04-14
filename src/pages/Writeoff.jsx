@@ -3,34 +3,37 @@ import { GoodsService } from "../Services/GoodsService";
 import { StoreService } from "../Services/StoreService";
 import { WriteOffService } from "../Services/WriteOffService";
 import ComboBoxGoods from  "../components/ComboBoxGoods";
-import ResultSearchGoods from "../Tabs/ResultSearchGoods"
+import ResultSearchGoods from "../Tabs/ResultSearchGoods";
+import { SummService } from "../Services/SummService";
 export default class Writeoff extends Component {
   goodsService;
   storeService;
   writeOffService;
+  summService;
   constructor(props) {
     super(props);
     this.writeOffService = new WriteOffService(props.data);
     this.goodsService = new GoodsService(props.data);
     this.storeService = new StoreService(props.data);
-
+     this.summService = new SummService(props.data);
+     this. formSearch = this.formSearch.bind(this);
+     this.subtraction = this.subtraction.bind(this);
     this.state = {
-      title: "Choose goods"
+      todos:this.summService.getAll(),
+      titleGoods: "Choose goods"
     }
   };
 
-  formSearch(e) {
-    e.preventDefault();
-    let goodsId = this.state.goods;
-    let valueQuantity = this.state.quantity;
-    if (goodsId, valueQuantity) {
-      let objSumm = this.summService.findGoods(goodsId, valueQuantity);
-      this.setState({
-        objSumm,
-        quantity: ''
-      })
-    }
+  subtraction(summId, valueSub){
+        this.summService.subtractionInSumm(summId, valueSub);
   };
+
+  formSearch(e){
+    e.preventDefault();//Удалить, после проверки на использование 
+    let goodsId = this.state.goods;
+    let todos =this.summService.getAll().filter(x =>x.goodsId==goodsId);
+      this.setState({todos})
+   };
 
   hendleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -44,17 +47,15 @@ export default class Writeoff extends Component {
   <div className="col-md-6"><h3 className="form-control-static cool">Write-off of goods</h3> 
                  <form className="form-inline" onSubmit={this.formSearch}>
                 <div className="container-fluid">
-                  {/* <select className="form-control" name="goods" onChange={this.hendleChange}>
-                     <option>{this.state.title}</option>
+                <select className="form-control" name="goods" onChange={this.hendleChange} >
+                    <option>{this.state.titleGoods}</option>
                     {this.goodsService.getAll().map(goods =>
                       (<ComboBoxGoods
                         GoodsData={goods}
                         key={goods.id}
                         value={goods.id}
-                      />))} 
-                  </select>  */}
-                  <input type="text" className="form-control" name="quantity"
-                    required placeholder="Quantity" onChange={this.hendleChange} />
+                      />))}
+                  </select>                 
                   <button type="submit" className="btn btn-default">Search</button>
                   </div>
                 </form></div>
@@ -64,23 +65,23 @@ export default class Writeoff extends Component {
           <div className="row">
             <div className="col-md-2"><div className="alert alert-success alert-dismissible" role="alert">#id</div> </div>
             <div className="col-md-2"><div className="alert alert-success alert-dismissible" role="alert">Goods</div></div>
-            <div className="col-md-2"><div className="alert alert-success alert-dismissible" role="alert">Volume</div></div>
             <div className="col-md-2"><div className="alert alert-success alert-dismissible" role="alert">Store</div></div>
+            <div className="col-md-2"><div className="alert alert-success alert-dismissible" role="alert">Volume</div></div>
             <div className="col-md-4"> </div>
           </div>
           </div>
         <div className="container-fluid">
           <div className="row">
- 
-              {/* <ResultSearchGoods
-                objSumm={this.state.objSumm}
-                key={objSumm.id}
-                resultStore={this.storeService.findById(this.state.objSumm.storeId)
-                }
-                resultGoods ={this.goodsService.findById(this.state.objSumm.goods)
-                }
-                 /> */}
-                          
+
+           {this.state.todos.map(x =>
+              <ResultSearchGoods           
+                summComponent={x}
+                key={x.id}                         
+                resultGoods={this.goodsService.getAll().find(y=>y.id==x.goodsId)}
+                resultStore={this.storeService.findById(x.storeId)}
+                minusVolumeSumm = {this.subtraction}
+                />
+              )},                          
           </div>
         </div>
         </Fragment>       

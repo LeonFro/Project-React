@@ -9,7 +9,8 @@ export class StoreService {
         this.database.dataStore.push({
             id: Date.now(),
             store: store,
-            capacity:capacity
+            capacity:capacity,
+            valueGoods:0
         })
     };
 

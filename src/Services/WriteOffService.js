@@ -5,11 +5,7 @@ export class WriteOffService {
       
     }
 
-    addResultSearch(objSumm){
-        
-    }
-
-    getAll() {
+       getAll() {
         return this.database.dataWriteOff;
     };
-}
+}//УДАЛИТЬ НЕ ИСПОЛЬЗУЕТСЯ

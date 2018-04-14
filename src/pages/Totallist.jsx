@@ -18,32 +18,39 @@ export default class Totallist extends Component {
        
       }
     };
+    
+    getffq=()=>{
+      this.summService.getNewArr();
+    }
+     
+    getff=()=>{
+      this.summService.getFor();
+    }    
+ 
 
     render() {
         return (
-            <Fragment>
- <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">#id</div> </div>
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">Store</div></div>
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">Remainder</div></div>
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert"> Goods </div></div>
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert"> Volume</div></div>
-            <div className="col-md-2"></div>
-          </div></div>
-          <div className="container-fluid">
-          <div className="row"> 
-              {this.summService.getAll().map(x =>
-                (<NewForm            
-                  summComponent={x}
-                  key={x.id}                         
-                  resultGoods={this.goodsService.getAll().find(y=>y.id==x.goodsId)}
-                  resultStore={this.storeService.findById(x.storeId)}
-                  addFormInDataSumm={this.addReceived}
-                   />
-                ))}; 
-                 </div></div>
-                </Fragment>     
+           
+ <div className="container">
+   <button onClick={this.getff}> Boom</button>
+ <table className="table table-hover">
+ <thead>
+  <tr>
+    <th>Store</th>
+    <th>Goods</th>
+    <th>Total volume</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  </tbody>
+</table>
+         </div>
+                       
         )
     }
 }

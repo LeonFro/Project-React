@@ -37,16 +37,13 @@ export default class NewForm extends Component {
       <Fragment>
       <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.summComponent.id}</div></div>
       <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultStore.store}</div></div>
-      <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.summComponent.remainder}</div></div>
-      <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultGoods.goods}</div>
-      <button className="btn btn-default" type="submit" disabled="disabled">+</button>
-      </div>
-      <div className="col-md-4"><div className="alert alert-info" role="alert">
+      <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultGoods.goods}</div></div>
+      <div className="col-md-6"><div className="alert alert-info" role="alert">
        <form className="form-inline" onSubmit={this.saveChangeValue}> 
               <input type="number" min="0" max="100"
                className="form-control"
                ref="received" defaultValue={this.props.summComponent.volumeOfGoods}  onChange={this.hendleChange}/>             
-         <button className="btn btn-default" type="submit" >Save</button> 
+         <button className="btn btn-warning" type="submit" >Save</button> 
          <button className="btn btn-success pull-right" onClick={() =>
             this.setState({ isEdit: false })}>Cancel</button>
        </form>
@@ -59,11 +56,10 @@ export default class NewForm extends Component {
  return(
           <Fragment>    
            <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.summComponent.id}</div></div>
-           <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultStore.store}</div></div>
-          <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.summComponent.remainder}</div></div> 
+           <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultStore.store}</div></div>       
           <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultGoods.goods}</div></div>
           <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.summComponent.volumeOfGoods}</div></div> 
-          <div className="col-md-2">  <button className="btn btn-success pull-right" onClick={() => this.setState({ isEdit: true })}>Change</button>
+          <div className="col-md-4"><button className="btn btn-success pull-right" onClick={() => this.setState({ isEdit: true })}>Change</button>
           <button className="btn btn-danger" disabled="disabled">Delete</button></div> 
           </Fragment>       
  )

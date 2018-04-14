@@ -19,7 +19,7 @@ export default class SummTabs extends Component {
     this.storeService = new StoreService(props.data);
     this.summService = new SummService(props.data);
     this.venderService = new VenderService(props.data);
-    this.formSearch = this.formSearch.bind(this);
+    this.addStoreGoodsComp = this.addStoreGoodsComp.bind(this);
     this.addReceived = this.addReceived.bind(this);
     this.state = {
       quantity: '',
@@ -32,7 +32,7 @@ export default class SummTabs extends Component {
     this.summService.addFormInSumm(summId, valueReceived)
   };
 
-   formSearch(e) {
+   addStoreGoodsComp(e) {
      e.preventDefault();
      let storeId = this.state.store;
      let goodsId = this.state.goods;
@@ -65,7 +65,7 @@ export default class SummTabs extends Component {
                 <div className="form-control-static">
                   <h1>Replenishment of store</h1>
                 </div>
-                <form className="form-inline" onSubmit={this.formSearch}>
+                <form className="form-inline" onSubmit={this.addStoreGoodsComp}>
 
                   <select className="form-control" name="store" onChange={this.hendleChange} >
                     <option>{this.state.titleStore}</option>
@@ -99,11 +99,10 @@ export default class SummTabs extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">#id</div> </div>
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">Store</div></div>
-            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">Remainder</div></div>
+            <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert">Store</div></div> 
             <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert"> Goods </div></div>
             <div className="col-md-2"><div className="alert alert-warning alert-dismissible" role="alert"> Volume</div></div>
-            <div className="col-md-2"></div>
+            <div className="col-md-4"></div>
           </div></div>
         <div className="container-fluid">
           <div className="row"> 
