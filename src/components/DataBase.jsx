@@ -70,14 +70,14 @@ export default class DataBase {
       {
           id:222,
           storeId:1,
-          goodsIs:13,
-          quontity:2,       
+          goodsId:13,
+          quantity:2,       
       },
       {
         id:223,
         storeId:1,
-        goodsIs:13,
-        quontity:-1,       
+        goodsId:13,
+        quantity:1,       
     }
   ]
 

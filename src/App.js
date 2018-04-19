@@ -52,12 +52,12 @@ export default class App extends Component {
                  data = {this.data}
                   {...props} />
               )} />
-               <Route path={`/SummTabs`} render={props => (
+               {/* <Route path={`/SummTabs`} render={props => (
                 <SummTabs
                   data = {this.data}
                   {...props} />
-              )} />
-                 <Route path={`/xyz`} render={props => (
+              )} /> */}
+                 <Route path={`/Doc`} render={props => (
                 <Documents
                   data = {this.data}
                   {...props} />
