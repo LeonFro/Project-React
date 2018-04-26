@@ -51,7 +51,7 @@ export default class ResultSeachGoods extends Component {
       <Fragment>
 
         <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.summComponent.id}</div></div>
-        <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultGoods.goods}</div></div>       
+        <div className="col-md-2"><div className="alert alert-info" role="alert">{this.props.resultGoods.goods}</div></div>
         <div className="col-md-2"><div className="alert alert-info" role="alert"> {this.props.resultStore.store}</div></div>
         <div className="col-md-2"><div className="alert alert-info" role="alert"> {this.props.summComponent.volumeOfGoods} </div></div>
         <div className="col-md-4"> <button className="btn btn-success" onClick={() => this.setState({ isEdit: true })}>Change</button></div>

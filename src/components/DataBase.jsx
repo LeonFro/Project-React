@@ -78,7 +78,21 @@ export default class DataBase {
         storeId:1,
         goodsId:13,
         quantity:1,       
-    }
-  ]
+    },
+    {
+        id:224,
+        storeId:45,
+        goodsId:11,
+        quantity:3,    
+    },
+    {
+        id:225,
+        storeId:1,
+        goodsId:2,
+        quantity:1,       
+    },
+  ];
+
+  dataTotal=[];
 
 }

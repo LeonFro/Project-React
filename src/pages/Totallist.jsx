@@ -2,38 +2,44 @@ import React, { Component,Fragment } from 'react';
 import { GoodsService } from "../Services/GoodsService";
 import { StoreService } from "../Services/StoreService";
 import { SummService } from "../Services/SummService";
+import { DocumentService} from "../Services/documentService";
+import { TotalService} from "../Services/TotalService";
+import ListTotal from '../components/ListTotal';
+
 import NewForm from "../Tabs/NewForm";
 export default class Totallist extends Component {
     goodsService;
     storeService;
     summService;
-  
+    documentService;
+    totalService;
+
     constructor(props) {
       super(props);
       this.goodsService = new GoodsService(props.data);
       this.storeService = new StoreService(props.data);
       this.summService = new SummService(props.data);
-      
+      this.documentService = new DocumentService(props.data);
+      this.totalService = new TotalService(props.data);
       this.state = {
        
       }
     };
-    
-    getffq=()=>{
-      this.summService.getNewArr();
-    }
-     
-    getff=()=>{
-      this.summService.getFor();
+         
+    resetlist=(e)=>{
+      e.preventDefault();
+      this.totalService.createNewApp();
+      this.setState({})
     }    
  
-
     render() {
-        return (
-           
+        return (         
  <div className="container">
-   <button onClick={this.getff}> Boom</button>
- <table className="table table-hover">
+   <div className ="row">
+<div className="col-md-5"></div>
+<div className="col-md-2"> <button type="button" className="btn btn-success" onClick={this.resetlist}>ResetList</button></div>
+<div className="col-md-5"></div></div>
+ <table className="table table-bordered">
  <thead>
   <tr>
     <th>Store</th>
@@ -42,11 +48,14 @@ export default class Totallist extends Component {
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
+  {this.totalService.getAll().map(x =>
+              (<ListTotal            
+                baseDoc={x}
+                key={x.id}                         
+                resultGoods={this.goodsService.getAll().find(y=>y.id==x.goodsId)}
+                resultStore={this.storeService.findById(x.storeId)}                
+                 />
+              ))}
   </tbody>
 </table>
          </div>

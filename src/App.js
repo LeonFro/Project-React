@@ -62,11 +62,11 @@ export default class App extends Component {
                   data = {this.data}
                   {...props} />
               )} />
-              <Route path={`/Writeoff`} render={props => (
+              {/* <Route path={`/Writeoff`} render={props => (
                 <Writeoff
                   data = {this.data}
                   {...props} />
-              )} />
+              )} /> */}
               <Route path={`/Totallist`} render={props => (
                 <Totallist
                   data = {this.data}
