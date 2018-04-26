@@ -15,20 +15,36 @@ export class TotalService {
     };
 
     createNewApp() {
-        this.database.dataDocuments.sort(function (a, b) { return a.storeId - b.storeId });
-        let temporaryData = this.database.dataDocuments.slice();
-        for (var i = 0; i < temporaryData.length; i++) {
-            for (var j = i + 1; j < temporaryData.length;) {
-                if (temporaryData[i].storeId == temporaryData[j].storeId && temporaryData[i].goodsId == temporaryData[j].goodsId) {
-                    //  this.letSumm(temporaryData[i].id,temporaryData[i].storeId,temporaryData[i].goodsId);
-                    temporaryData.splice(j, 1);
-                } else { j++ }
+    let totalReport = {};debugger;
+    for(var i in this.database.dataDocuments){
+        let document = this.database.dataDocuments[i];
+        if(totalReport[document.storeId]){
+            if(totalReport[document.storeId][document.goodsId]){
+                totalReport[document.storeId][document.goodsId] += document.quantity;
+            }else{
+                totalReport[document.storeId][document.goodsId] = document.quantity;
             }
-            this.database.dataTotal = temporaryData;
-            console.log(temporaryData);
-            return temporaryData;
-
+        }else{
+            totalReport[document.storeId]= {};
+            totalReport[document.storeId][document.goodsId] = document.quantity;
         }
+    }
+
+
+        // this.database.dataDocuments.sort(function (a, b) { return a.storeId - b.storeId });
+        // let temporaryData = this.database.dataDocuments.slice();
+        // for (var i = 0; i < temporaryData.length; i++) {
+        //     for (var j = i + 1; j < temporaryData.length;) {
+        //         if (temporaryData[i].storeId == temporaryData[j].storeId && temporaryData[i].goodsId == temporaryData[j].goodsId) {
+        //             //  this.letSumm(temporaryData[i].id,temporaryData[i].storeId,temporaryData[i].goodsId);
+        //             temporaryData.splice(j, 1);
+        //         } else { j++ }
+        //     }
+        //     this.database.dataTotal = temporaryData;
+        //     console.log(temporaryData);
+        //     return temporaryData;
+
+        // }
 
     };
 
