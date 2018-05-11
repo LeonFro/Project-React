@@ -48,31 +48,11 @@ export default class DataBase {
         }
         ];
 
-    dataSumm=[{
-        id:6565,
-        goodsId:11,
-        remainder:0,
-        storeId:1,
-        volumeOfGoods:4
-    },  {id:6564,
-    goodsId:11,
-    remainder:0,
-    storeId:1,
-    volumeOfGoods:1},
-    {id:6563,
-        goodsId:13,
-        remainder:0,
-        storeId:1,
-        volumeOfGoods:2}
+    dataSumm=[
 ];
 
   dataDocuments=[
-      {
-          id:222,
-          storeId:1,
-          goodsId:13,
-          quantity:2,       
-      },
+     
       {
         id:223,
         storeId:1,

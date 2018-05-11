@@ -1,7 +1,6 @@
 import React, { Component,Fragment } from 'react';
 import { GoodsService } from "../Services/GoodsService";
 import { StoreService } from "../Services/StoreService";
-import { SummService } from "../Services/SummService";
 import { DocumentService} from "../Services/documentService";
 import { TotalService} from "../Services/TotalService";
 import ListTotal from '../components/ListTotal';
@@ -18,7 +17,6 @@ export default class Totallist extends Component {
       super(props);
       this.goodsService = new GoodsService(props.data);
       this.storeService = new StoreService(props.data);
-      this.summService = new SummService(props.data);
       this.documentService = new DocumentService(props.data);
       this.totalService = new TotalService(props.data);
       this.state = {
@@ -28,7 +26,7 @@ export default class Totallist extends Component {
          
     resetlist=(e)=>{
       e.preventDefault();
-      this.totalService.createNewApp();
+      this.totalService.createRaport();
       this.setState({})
     }    
  

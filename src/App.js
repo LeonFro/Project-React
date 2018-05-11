@@ -12,8 +12,6 @@ import Store from './pages/Store';
 import Toolbar from "./components/Toolbar";
 import NotFound from "./pages/NotFound";
 import DataBase from './components/DataBase';
-import SummTabs from './pages/SummTabs';
-import Writeoff from './pages/Writeoff';
 import Totallist from './pages/Totallist';
 import Documents from './pages/Documents';
 
@@ -52,21 +50,11 @@ export default class App extends Component {
                  data = {this.data}
                   {...props} />
               )} />
-               {/* <Route path={`/SummTabs`} render={props => (
-                <SummTabs
-                  data = {this.data}
-                  {...props} />
-              )} /> */}
                  <Route path={`/Doc`} render={props => (
                 <Documents
                   data = {this.data}
                   {...props} />
               )} />
-              {/* <Route path={`/Writeoff`} render={props => (
-                <Writeoff
-                  data = {this.data}
-                  {...props} />
-              )} /> */}
               <Route path={`/Totallist`} render={props => (
                 <Totallist
                   data = {this.data}

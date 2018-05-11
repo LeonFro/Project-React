@@ -1,8 +1,9 @@
 export class GoodsService {
     database;
+   
     constructor(db) {
         this.database = db;
-
+     
     }
 
     addGoodAndVender(newGood, newVender) {
