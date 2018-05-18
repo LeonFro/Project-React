@@ -19,17 +19,38 @@ export default class Totallist extends Component {
       this.storeService = new StoreService(props.data);
       this.documentService = new DocumentService(props.data);
       this.totalService = new TotalService(props.data);
+      
       this.state = {
-       
+       result:{}
       }
     };
          
     resetlist=(e)=>{
       e.preventDefault();
-      this.totalService.createRaport();
-      this.setState({})
+     let result = this.totalService.createNewApp();
+      this.setState({result})
     }    
  
+renderGoods(storeGoods){
+  let goodsDivArray=[];
+for(var key in storeGoods){
+goodsDivArray.push(<div key={key}>{key}/{storeGoods[key]}</div>)
+}
+return goodsDivArray;
+}
+
+  renderStores(totalReport){
+    let storesArray = [];
+    for(var key in totalReport){ 
+      let goodsArray = this.renderGoods(totalReport[key]);
+      storesArray.push(<div key={key}>
+       <div>{key}</div>
+       <div>{goodsArray}</div>
+       </div>);
+    }   
+    return storesArray;
+  }
+
     render() {
         return (         
  <div className="container">
@@ -37,7 +58,12 @@ export default class Totallist extends Component {
 <div className="col-md-5"></div>
 <div className="col-md-2"> <button type="button" className="btn btn-success" onClick={this.resetlist}>ResetList</button></div>
 <div className="col-md-5"></div></div>
- <table className="table table-bordered">
+{
+  this.renderStores(this.state.result)
+}
+
+
+ {/* <table className="table table-bordered">
  <thead>
   <tr>
     <th>Store</th>
@@ -46,7 +72,9 @@ export default class Totallist extends Component {
   </tr>
   </thead>
   <tbody>
-  {this.totalService.getAll().map(x =>
+  {this.state.result 
+  
+  totalService.getAll().map(x =>
               (<ListTotal            
                 baseDoc={x}
                 key={x.id}                         
@@ -55,7 +83,7 @@ export default class Totallist extends Component {
                  />
               ))}
   </tbody>
-</table>
+</table> */}
          </div>
                        
         )
