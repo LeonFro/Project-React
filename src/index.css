@@ -12,6 +12,12 @@ body {
   width: 100px;
   margin:0;
 }
+
+.list-group-item-warning{
+  text-align: center;
+  float: right;
+}
+
 .form-inline{
   background: rgba(218, 200, 175, 0.801);
    margin:auto;
@@ -26,4 +32,8 @@ body {
 
 .get{
   margin: 8px;
+}
+
+.tableNoBorder{
+  border: 0px,0px;
 }

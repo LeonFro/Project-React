@@ -16,7 +16,7 @@ export default class ListGoodsAndVender extends Component {
         let VenderId = this.props.resultVender.id;
         this.props.FormSave(GoodsId, valueGood, VenderId, valueVender);
     }
-    editOn() {
+    editOn() {                // Режим редактирования
         return (<li className="list-group-item list-group-item-warning">
             <form className="form-inline" onSubmit={(e) => {
                 e.preventDefault();
@@ -30,7 +30,7 @@ export default class ListGoodsAndVender extends Component {
         </li>)
     }
 
-    editOff() {
+    editOff() {            // Режим по умолчанию (Простая форма)
         return (<li className="list-group-item list-group-item-warning">
             <form className="form-inline" onSubmit={(e) => {
                 e.preventDefault();
@@ -52,6 +52,6 @@ export default class ListGoodsAndVender extends Component {
     }
 
     render() {
-        return this.state.isEdit ? this.editOn() : this.editOff();
+        return this.state.isEdit ? this.editOn() : this.editOff();   // Активировать режим редактирования
     };
 }

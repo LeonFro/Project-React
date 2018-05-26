@@ -25,19 +25,20 @@ export default class Goods extends Component {
     let newGoods = this.state.goods;
     let newVender = this.state.vender;
     let checkVender = this.venderService.findVender(newVender);// результат(obj id: , name: )  или undefined
-    if(checkVender!==undefined){ 
-     this.goodsService.addGoods(newGoods,checkVender);// передаем в метод добавления в базу Гудсов 
-     this.setState({
-      goods: "",
-      vender: ""
-    })
-    }else{
-    if (newGoods, newVender){
-      this.goodsService.addGoodAndVender(newGoods, newVender);
+    if (checkVender !== undefined) {
+      this.goodsService.addGoods(newGoods, checkVender);// передаем в метод добавления в базу Гудсов 
       this.setState({
         goods: "",
         vender: ""
-      })}
+      })
+    } else {
+      if (newGoods, newVender) {
+        this.goodsService.addGoodAndVender(newGoods, newVender);
+        this.setState({
+          goods: "",
+          vender: ""
+        })
+      }
     }
   }
 
@@ -57,7 +58,6 @@ export default class Goods extends Component {
   render() {
     return (
       <div className="row">
-      
         <div className="col-xs-3 col-sm-3"> </div>
         <div className="col-xs-8 col-sm-6">
           <form className="form-inline" onSubmit={this.addGoodsPlusVender}>
@@ -65,16 +65,16 @@ export default class Goods extends Component {
               <h3 className="form-control-static cool">Goods</h3>
             </div>
             <input type="text" className="form-control" name="goods" value={this.state.goods}
-            required placeholder="Add good" onChange={this.handleChange} />
+              required placeholder="Add good" onChange={this.handleChange} />
             <input type="text" className="form-control" name="vender" value={this.state.vender}
-            required placeholder="Add vender" onChange={this.handleChange} list="venders" />
-                <datalist id="venders">
-                
-                 {this.venderService.getAll().map(x=>(<OptionVender
-                 result={x}
-                 key={x.id}
-                 />))}
-                  </datalist>
+              required placeholder="Add vender" onChange={this.handleChange} list="venders" />
+            <datalist id="venders">
+
+              {this.venderService.getAll().map(x => (<OptionVender
+                result={x}
+                key={x.id}
+              />))}
+            </datalist>
 
             <button type="submit" className="btn btn-default">Add</button>
           </form>
@@ -86,10 +86,9 @@ export default class Goods extends Component {
                 key={goodItem.id}
                 delGoods={this.deleteGoods}
                 FormSave={this.SaveForm}
-                resultVender={this.goodsService.findById(goodItem.venderId)}/>))}    
+                resultVender={this.goodsService.findById(goodItem.venderId)} />))}
           </ul>
         </div>
-
       </div>
     );
   }

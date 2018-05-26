@@ -7,30 +7,28 @@ export class DocumentService {
     goodsService;
     storeService;
    
-
     constructor(db) {
         this.database = db;
         this.goodsService = new GoodsService(db);
-        this.storeService = new StoreService(db);
-       
+        this.storeService = new StoreService(db);     
     }
 
     add(doc) {
         let store = this.storeService.findById(doc.storeId); // объект 
         let good = this.goodsService.findGoodById(doc.goodsId);// объект 
-        let operation = doc.operation;debugger
+        let operation = doc.operation;
         let quantity = doc.quantity;
-        if (store == null) {
+        if (store === null) {
             alert(`No store with id [${doc.storeId}]`);
             return false;
         };
 
-        if (good == null) {
+        if (good === null) {
             alert(`No good with id [${doc.goodsId}]`);
             return false;
         };
 
-        if (operation == null) {
+        if (operation === null) {
             alert(`No choose operation`);
             return false;
         };
@@ -69,7 +67,7 @@ export class DocumentService {
     numberOfGoodsInStore(storeId) {// Cумма всех товаров на данном складе
         let sum = 0;
         for (var i = 0; i < this.database.dataDocuments.length; i++) {
-            if (storeId == this.database.dataDocuments[i].storeId) {
+            if (storeId === this.database.dataDocuments[i].storeId) {
                 sum = sum + this.database.dataDocuments[i].quantity
             }
         }
@@ -77,11 +75,11 @@ export class DocumentService {
     };
 
     diductionOfStore(storeId, goodId, quantity) {//провeрка при списаниi
-        let remainder = 0;debugger;
+        let remainder = 0;
         let result;
         let temporaryData = this.createNewApp();
         for (var i = 0; i < this.database.dataDocuments.length; i++) {
-            if (storeId == this.database.dataDocuments[i].storeId && goodId == this.database.dataDocuments[i].goodsId) {              
+            if (storeId === this.database.dataDocuments[i].storeId && goodId === this.database.dataDocuments[i].goodsId) {              
                 result = temporaryData[this.database.dataDocuments[i].storeId][this.database.dataDocuments[i].goodsId] - quantity
                 if (0 <= result) {
                     return result;
@@ -117,7 +115,7 @@ export class DocumentService {
         return totalReport;
         };
 
-    getAll() {
+       getAll() {
         return this.database.dataDocuments;
     };
 

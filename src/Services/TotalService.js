@@ -49,7 +49,7 @@ export class TotalService {
    
 
     
-    getAll() {
+    getAll() {debugger;
         return this.database.dataTotal;
     };
 };

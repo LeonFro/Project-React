@@ -37,29 +37,29 @@ export default class App extends Component {
               )} />
               <Route path={`/Vender`} render={props => (
                 <Vender
-                  data = {this.data}
+                  data={this.data}
                   {...props} />
               )} />
               {<Route path={`/Goods`} render={props => (
                 <Goods
-                  data = {this.data}
+                  data={this.data}
                   {...props} />
               )} />}
-               <Route path={`/Store`} render={props => (
-                <Store                  
-                 data = {this.data}
+              <Route path={`/Store`} render={props => (
+                <Store
+                  data={this.data}
                   {...props} />
               )} />
-                 <Route path={`/Doc`} render={props => (
+              <Route path={`/Doc`} render={props => (
                 <Documents
-                  data = {this.data}
+                  data={this.data}
                   {...props} />
               )} />
               <Route path={`/Totallist`} render={props => (
                 <Totallist
-                  data = {this.data}
+                  data={this.data}
                   {...props} />
-              )} />             
+              )} />
               <Route render={() => (
                 <NotFound />
               )} />

@@ -4,13 +4,14 @@ import { VenderService } from "../Services/VenderService";
 
 export default class Vender extends Component {
   venderService;
+
   constructor(props) {
-    super(props) 
-    this.venderService = new VenderService(props.data);   
+    super(props)
+    this.venderService = new VenderService(props.data);
     this.state = {
       vender: ''
-    }
-    this.deleteVender=this.deleteVender.bind(this);
+    };
+    this.deleteVender = this.deleteVender.bind(this);
   }
 
   addVender = event => {
@@ -25,12 +26,12 @@ export default class Vender extends Component {
   thisChange = event => {
     let vender = event.target.value;
     this.setState({ vender })
-  }; 
+  };
 
- deleteVender(id){
-  this.venderService.deleteVender(id);
-  this.setState({ });
- }
+  deleteVender(id) {
+    this.venderService.deleteVender(id);
+    this.setState({});
+  }
 
   render() {
     return (
@@ -58,7 +59,6 @@ export default class Vender extends Component {
           </ul>
         </div>
       </div>
-
     )
   }
 }

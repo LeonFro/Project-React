@@ -18,10 +18,10 @@ export class VenderService {
 
     deleteVender(id) {
         let indexVender = this.database.dataVender.findIndex(x => {
-            return x.id == id
+            return x.id === id
         })
         let indexGoods = this.database.dataGoods.findIndex(y=>{
-            return y.venderId == id
+            return y.venderId === id
         })
 
         if(indexGoods>-1){
@@ -33,6 +33,6 @@ export class VenderService {
 
     findVender(newVender){ // проверяет имеется ли Вендер в базе (резальтат/undefind)
         return this.database.dataVender.find(x =>
-            x.vender == newVender)
+            x.vender === newVender)
     };
 } 
