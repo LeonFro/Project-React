@@ -15,41 +15,42 @@ export class TotalService {
     };
 
     createNewApp() {
-    let totalReport = {};
-    for(var i in this.database.dataDocuments){
-        let document = this.database.dataDocuments[i];
-        if(totalReport[document.storeId]){
-            if(totalReport[document.storeId][document.goodsId]){
-                totalReport[document.storeId][document.goodsId] += document.quantity;
-            }else{
+        let totalReport = {};
+        for (var i in this.database.dataDocuments) {
+            let document = this.database.dataDocuments[i];
+            if (totalReport[document.storeId]) {
+                if (totalReport[document.storeId][document.goodsId]) {
+                    totalReport[document.storeId][document.goodsId] += document.quantity;
+                } else {
+                    totalReport[document.storeId][document.goodsId] = document.quantity;
+                }
+            } else {
+                totalReport[document.storeId] = {};
                 totalReport[document.storeId][document.goodsId] = document.quantity;
             }
-        }else{
-            totalReport[document.storeId]= {};
-            totalReport[document.storeId][document.goodsId] = document.quantity;
         }
-    }
-    return totalReport;
+        return totalReport;
     };
 
-    createRaport(){
-        let sumQuantity = this.createNewApp();debugger;
-        let temporaryData =  JSON.parse(JSON.stringify(this.database.dataDocuments));// клонировать массив       
-          for (var i = 0; i < temporaryData.length; i++) {
-             for (var j = i + 1; j < temporaryData.length;){
-                 if (temporaryData[i].storeId == temporaryData[j].storeId && temporaryData[i].goodsId == temporaryData[j].goodsId) { 
-                     temporaryData[i].quantity = sumQuantity[temporaryData[i].storeId][temporaryData[i].goodsId];                  
-                     temporaryData.splice(j, 1);
-                 } else { j++ }
-            }           
-         }
-         this.database.dataTotal = temporaryData;
-             return temporaryData;
+    createRaport() {
+        let sumQuantity = this.createNewApp(); debugger;
+        let temporaryData = JSON.parse(JSON.stringify(this.database.dataDocuments));// клонировать массив       
+        for (var i = 0; i < temporaryData.length; i++) {
+            for (var j = i + 1; j < temporaryData.length;) {
+                if (temporaryData[i].storeId == temporaryData[j].storeId && temporaryData[i].goodsId == temporaryData[j].goodsId) {
+                    temporaryData[i].quantity = sumQuantity[temporaryData[i].storeId][temporaryData[i].goodsId];
+                    temporaryData.splice(j, 1);
+                } else { j++ }
+            }
+        }
+        this.database.dataTotal = temporaryData;
+        return temporaryData;
     };
-   
 
-    
-    getAll() {debugger;
+
+
+    getAll() {
+        debugger;
         return this.database.dataTotal;
     };
 };

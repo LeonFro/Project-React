@@ -64,6 +64,7 @@ export default class Goods extends Component {
             <div className="form-control-static">
               <h3 className="form-control-static cool">Goods</h3>
             </div>
+            
             <input type="text" className="form-control" name="goods" value={this.state.goods}
               required placeholder="Add good" onChange={this.handleChange} />
             <input type="text" className="form-control" name="vender" value={this.state.vender}

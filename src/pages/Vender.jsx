@@ -11,6 +11,7 @@ export default class Vender extends Component {
     this.state = {
       vender: ''
     };
+    
     this.deleteVender = this.deleteVender.bind(this);
   }
 

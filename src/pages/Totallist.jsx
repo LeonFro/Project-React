@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { GoodsService } from "../Services/GoodsService";
 import { StoreService } from "../Services/StoreService";
 import { TotalService } from "../Services/TotalService";

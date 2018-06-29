@@ -4,8 +4,8 @@ export default class SelectGoodsInResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    }
-  }  //Вопрос с value
+    }//Вопрос с value
+  }  
   render() {
     const { DataGoods } = this.props;
     return (

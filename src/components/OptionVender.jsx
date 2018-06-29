@@ -6,6 +6,7 @@ export default class OptionVender extends Component {
     this.state = {
     }
   }
+  
   render() {
     const { result } = this.props; 
     return (     

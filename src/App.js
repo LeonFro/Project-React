@@ -23,7 +23,6 @@ export default class App extends Component {
       data: this.data
     }
   }
-
   render() {
     return (
       <Router>

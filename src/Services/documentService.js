@@ -74,7 +74,7 @@ export class DocumentService {
         return sum;
     };
 
-    diductionOfStore(storeId, goodId, quantity) {//провeрка при списаниi
+    diductionOfStore(storeId, goodId, quantity) {//провeрка при списании
         let remainder = 0;
         let result;
         let temporaryData = this.createNewApp();

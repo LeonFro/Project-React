@@ -6,6 +6,7 @@ function ListVender(props) {
             <form className="form-inline" onSubmit={(e) => {
                 e.preventDefault(); return false;
             }}>
+            
                 <u className="get">Vender:</u>
                 <p className="text-primary get">{props.venderData.vender}</p>
                 <button className="btn btn-success pull-right go"

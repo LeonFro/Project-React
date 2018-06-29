@@ -3,8 +3,8 @@ import React, { Component,Fragment} from 'react';
  export default class NewForm extends Component {
    constructor(props) {
      super(props);
- 
    }
+   
    render(){
      let classForm = this.props.baseDoc.quantity>0?"alert alert-info":"alert alert-success"
   return(

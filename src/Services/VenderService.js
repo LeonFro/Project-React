@@ -4,7 +4,7 @@ export class VenderService {
         this.database = db;
         this.deleteVender = this.deleteVender.bind(this);
     }
-    
+
     add(vender) {
         this.database.dataVender.push({
             id: Date.now(),
@@ -20,18 +20,19 @@ export class VenderService {
         let indexVender = this.database.dataVender.findIndex(x => {
             return x.id === id
         })
-        let indexGoods = this.database.dataGoods.findIndex(y=>{
+        let indexGoods = this.database.dataGoods.findIndex(y => {
             return y.venderId === id
         })
 
-        if(indexGoods>-1){
+        if (indexGoods > -1) {
             alert("The Vender is used in the list!")
-        }else{ this.database.dataVender.splice(indexVender, 1);
+        } else {
+            this.database.dataVender.splice(indexVender, 1);
         }
-       
+
     };
 
-    findVender(newVender){ // проверяет имеется ли Вендер в базе (резальтат/undefind)
+    findVender(newVender) { // проверяет имеется ли Вендер в базе (резальтат/undefind)
         return this.database.dataVender.find(x =>
             x.vender === newVender)
     };

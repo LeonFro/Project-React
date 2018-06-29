@@ -22,7 +22,7 @@ export class GoodsService {
     }
 
     addGoods(newGood, checkVender) {// получаем (строка),(obj) , Метод добавления в базу Гудсов 
-        let idVender = checkVender.id; // присваиваем  idвендору
+        let idVender = checkVender.id; // присваиваем  id вендору
         let idGoods = Date.now();
         this.database.dataGoods.push({
             id: idGoods,

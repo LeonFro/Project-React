@@ -8,6 +8,7 @@ export default class ListStore extends Component {
             isEdit: false,
         }
     }
+    
     saveForm = e => {
         this.setState({ isEdit: false });
         let newNameStore = this.refs.store.value;

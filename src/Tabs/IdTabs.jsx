@@ -6,6 +6,7 @@ export default class IdTabs extends Component {
 this.state={
   }
 }
+
     render() {
       return (
     <td>{this.props.TabsSumm.id}</td>

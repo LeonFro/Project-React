@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function Toolbar() {
     return (
+        
         <header>
             <nav className="navbar navbar-default navbar-static-top">
                 <div className="container">
@@ -14,8 +15,8 @@ function Toolbar() {
                             <button className="btn btn-link"><NavLink exact to="/" activeStyle={{ color: "red" }}>Home</NavLink></button>
                             <button className="btn btn-link"><NavLink to="/Vender" activeStyle={{ color: "red" }}>Vender</NavLink></button>
                             <button className="btn btn-link"> <NavLink to="/Goods" activeStyle={{ color: "green" }}>Goods</NavLink></button>
-                            <button className="btn btn-link"><NavLink to="/Store" activeStyle={{ color: "orange" }}>Store</NavLink></button>                         
-                            <button className="btn btn-link"><NavLink to="/Doc" activeStyle={{ color: "orange" }}>Documents</NavLink></button>                      
+                            <button className="btn btn-link"><NavLink to="/Store" activeStyle={{ color: "orange" }}>Store</NavLink></button>
+                            <button className="btn btn-link"><NavLink to="/Doc" activeStyle={{ color: "orange" }}>Documents</NavLink></button>
                             <button className="btn btn-link"><NavLink to="/Totallist" activeStyle={{ color: "orange" }}>Totallist</NavLink></button>
                         </ul>
                     </div>

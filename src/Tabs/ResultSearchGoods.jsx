@@ -59,6 +59,7 @@ export default class ResultSeachGoods extends Component {
       </Fragment>
     )
   }
+  
   render() {
     return (
       this.state.isEdit ? this.editOn() : this.editOff()

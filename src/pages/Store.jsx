@@ -90,7 +90,6 @@ export default class Store extends Component {
           </ul>
         </div>
       </div>
-
     );
   }
 }
