@@ -47,10 +47,15 @@ export class TotalService {
         return temporaryData;
     };
 
+<<<<<<< HEAD
 
 
     getAll() {
         debugger;
+=======
+    
+    getAll() {debugger;
+>>>>>>> fc541ec8a5cfcc40bcd3f0280738b1a653fb22c0
         return this.database.dataTotal;
     };
 };
